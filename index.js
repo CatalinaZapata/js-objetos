@@ -1,22 +1,51 @@
+//Definición de clases
 class cliente
 {
     nombreCliente;
-    dniCliente;
-    numeroCuenta;
-    saldoCuenta;
+    dniCliente; 
+    rutCliente;
 }
 
-const cliente1 = new cliente();
-    cliente1.nombreCliente = "José";
-    cliente1.dniCliente = "13232";
-    cliente1.numeroCuenta = "232323";
-    cliente1.saldoCuenta = 5000;
+class cuentaCorriente
+{
+    numero;
+    #saldo;
+    agencia; 
 
-const cliente2 = new cliente();
-    cliente2.nombreCliente = "Leonardo";
-    cliente2.dniCliente = "13804050";
-    cliente2.numeroCuenta = "123434343";
-    cliente2.saldoCuenta = 1000;
+    constructor(){//El constructormétodo es un método especial de una clase para crear e inicializar una instancia de objeto de esa clase.
+        this.#saldo = 0;
+        this.numero = "";
+        this.agencia = "";
+    }
+    
+    depositoEnCuenta(valor){
+        if(valor > 0)
+            this.#saldo += valor;//es un operador de suma
+            return this.#saldo;
+    }
 
-console.log(cliente1);
-console.log(cliente2);
+    retirarDeCuenta(valor){
+        if (valor <= this.#saldo)
+            this.#saldo -= valor;     
+    }
+
+    verSaldo(){
+        return this.#saldo;
+    }
+}
+
+cuentaDeLeonardo = new cuentaCorriente();
+//cuentaDeLeonardo.#saldo = 10;
+
+let saldo = cuentaDeLeonardo.verSaldo();
+console.log("El saldo actual es " + saldo);
+
+saldo = cuentaDeLeonardo.depositoEnCuenta(100);
+console.log("El saldo actual es " + saldo);
+
+saldo = cuentaDeLeonardo.retirarDeCuenta(100);
+console.log('El Saldo actual es '+saldo);
+
+saldo = cuentaDeLeonardo.depositoEnCuenta(10)
+console.log('El Saldo actual es '+saldo);
+
