@@ -1,18 +1,27 @@
+import { clientes } from "./clientes.js";
 export class cuentaCorriente
 {
-    cliente;
+    #cliente;
     numero;
     agencia; 
     #saldo;
 
+    set setCliente(valor){
+        if(valor instanceof clientes)
+            this.#cliente = valor;
+    }
+
+    get getCliente(){
+        return this.#cliente;
+    }
+
     constructor(){//El constructormétodo es un método especial de una clase para crear e inicializar una instancia de objeto de esa clase.
-        this.cliente = null;
+        this.#cliente = null;
         this.numero = "";
         this.agencia = "";
         this.#saldo = 0;
-         
     }
-    
+
     depositoEnCuenta(valor){
         if(valor > 0)
             this.#saldo += valor;//es un operador de suma
