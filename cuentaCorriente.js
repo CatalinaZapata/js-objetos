@@ -21,7 +21,7 @@ export class cuentaCorriente
         this.numero = numero;
         this.agencia = agencia;
         this.#saldo = 0;
-        cuentaCorriente.cantidadCuenta++;
+        cuentaCorriente.cantidadCuenta++;//se accede a el con el name de la clase.parametro
     }
 
     depositoEnCuenta(valor){
