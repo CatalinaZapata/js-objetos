@@ -1,51 +1,40 @@
-//Definición de clases
-class cliente
-{
-    nombreCliente;
-    dniCliente; 
-    rutCliente;
-}
+import {clientes}  from "./clientes.js";
+import {cuentaCorriente} from "./cuentaCorriente.js"
 
-class cuentaCorriente
-{
-    numero;
-    #saldo;
-    agencia; 
+const cliente = new clientes();
+    cliente.nombreCliente = "Leonardo";
+    cliente.dniCliente = "13804050";
+    cliente.rutCliente = "123224";
 
-    constructor(){//El constructormétodo es un método especial de una clase para crear e inicializar una instancia de objeto de esa clase.
-        this.#saldo = 0;
-        this.numero = "";
-        this.agencia = "";
-    }
-    
-    depositoEnCuenta(valor){
-        if(valor > 0)
-            this.#saldo += valor;//es un operador de suma
-            return this.#saldo;
-    }
-
-    retirarDeCuenta(valor){
-        if (valor <= this.#saldo)
-            this.#saldo -= valor;     
-    }
-
-    verSaldo(){
-        return this.#saldo;
-    }
-}
-
-cuentaDeLeonardo = new cuentaCorriente();
-//cuentaDeLeonardo.#saldo = 10;
+const cuentaDeLeonardo = new cuentaCorriente();
+    cuentaDeLeonardo.numero = "1";
+    cuentaDeLeonardo.agencia = "001";
+    cuentaDeLeonardo.cliente = cliente;//Esta linea enlaza la clase cuentaCorriente con clientes
 
 let saldo = cuentaDeLeonardo.verSaldo();
-console.log("El saldo actual es " + saldo);
 
-saldo = cuentaDeLeonardo.depositoEnCuenta(100);
-console.log("El saldo actual es " + saldo);
+saldo = cuentaDeLeonardo.depositoEnCuenta(150);
+console.log("El saldo actual es (cuentaDeLeonardo) " + saldo);
 
-saldo = cuentaDeLeonardo.retirarDeCuenta(100);
-console.log('El Saldo actual es '+saldo);
+const cliente2 = new clientes();
+    cliente2.nombreCliente = "Maria";
+    cliente2.dniCliente = "987654";
+    cliente2.rutCliente = "4567";
 
-saldo = cuentaDeLeonardo.depositoEnCuenta(10)
-console.log('El Saldo actual es '+saldo);
+const cuentaDeMaria = new cuentaCorriente();
+    cuentaDeMaria.numero = "2";
+    cuentaDeMaria.agencia = "002";
+    cuentaDeMaria.cliente = cliente2;
 
+let parametroValor = 100;
+console.log("parametro valor", parametroValor);
+
+cuentaDeLeonardo.transferirParaCuenta(parametroValor,cuentaDeMaria);
+console.log("parametro valor", parametroValor);
+
+const saldoMaria = cuentaDeMaria.verSaldo();
+
+console.log("Cuenta de maria", cuentaDeMaria);
+console.log("El saldo actual es (cuentaDeMaria) " + saldoMaria);
+const saldoLeonardo = cuentaDeLeonardo.verSaldo();
+console.log("El saldo actual es (cuentaDeLeonardo) " + saldoLeonardo);
